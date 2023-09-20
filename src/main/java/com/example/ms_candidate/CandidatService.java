@@ -3,6 +3,9 @@ package com.example.ms_candidate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 
 @Service
 public class CandidatService {
@@ -12,6 +15,14 @@ public class CandidatService {
 
     public Candidat addCandidat(Candidat candidat){
         return candidatRepository.save(candidat);
+    }
+
+    public List<Candidat> getAllCandidats(){
+        return candidatRepository.findAll();
+    }
+
+    public Optional<Candidat> getCandidatById(Integer id){
+        return candidatRepository.findById(id);
     }
 
     public Candidat updateCandidat(Candidat c,Integer id) {
@@ -33,4 +44,6 @@ public class CandidatService {
         }
         return "Introuvable !";
     }
+
+
 }

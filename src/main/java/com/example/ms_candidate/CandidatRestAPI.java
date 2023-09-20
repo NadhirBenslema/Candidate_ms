@@ -6,6 +6,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 @RequestMapping(value = "/candidats")
 public class CandidatRestAPI {
@@ -17,6 +20,18 @@ public class CandidatRestAPI {
     @ResponseStatus
     public ResponseEntity<Candidat> createCandidat(@RequestBody Candidat c){
         return new ResponseEntity<>(candidatService.addCandidat(c), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/getAll")
+    @ResponseStatus
+    public List<Candidat> getAllCandidatsC(){
+        return candidatService.getAllCandidats();
+    }
+
+    @GetMapping("/getById/{id}")
+    @ResponseStatus
+    public Optional<Candidat> getCandidatByIdC(@PathVariable("id")Integer id){
+        return candidatService.getCandidatById(id);
     }
 
 
