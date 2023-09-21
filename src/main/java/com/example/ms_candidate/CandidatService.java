@@ -46,4 +46,29 @@ public class CandidatService {
     }
 
 
+    public Candidat updateLikes(Integer id) {
+        if (candidatRepository.findById(id).isPresent()) {
+            Candidat existingCandidat = candidatRepository.findById(id).get();
+            existingCandidat.setLikes(existingCandidat.likes+1);
+            return candidatRepository.save(existingCandidat);
+        }
+        return null;
+    }
+
+    public Candidat updateDislike(Integer id) {
+        if (candidatRepository.findById(id).isPresent()) {
+            Candidat existingCandidat = candidatRepository.findById(id).get();
+            if (existingCandidat.likes >0 ) {
+                existingCandidat.setLikes(existingCandidat.likes-1);
+                return candidatRepository.save(existingCandidat);
+
+            }
+            existingCandidat.setLikes(existingCandidat.likes);
+            return  candidatRepository.save(existingCandidat);
+
+        }
+        return null;
+    }
+
+
 }

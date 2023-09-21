@@ -21,6 +21,8 @@ public class Candidat implements Serializable {
 
     public String nom,prenom,email;
 
+    public Integer likes=0;
+
     public Candidat(String nom) {
         this.nom=nom;
     }

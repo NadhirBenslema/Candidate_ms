@@ -48,6 +48,20 @@ public class CandidatRestAPI {
     }
 
 
+    @PutMapping( value = "/updateLike/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus
+    public ResponseEntity<Candidat> updateCandidatLike(@PathVariable("id") Integer id){
+        return new ResponseEntity<>(candidatService.updateLikes(id), HttpStatus.OK);
+    }
+
+    @PutMapping( value = "/updateDislike/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus
+    public ResponseEntity<Candidat> updateCandidatDislike(@PathVariable("id") Integer id){
+        return new ResponseEntity<>(candidatService.updateDislike(id), HttpStatus.OK);
+    }
+
+
+
 
 
 
